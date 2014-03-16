@@ -2,7 +2,7 @@ public class Linkedlist{
 	/*
 		inner class, to represent our nodes
 	*/
-	public class Node{
+	private class Node{
 		public int data;
 		public Node next;
 		public String toString(){
@@ -21,10 +21,14 @@ public class Linkedlist{
 		this.head.data = val;
 		this.head.next = null;
 	}
+	public Linkedlist(Node n){
+		this.head = n;
+	}
 	//shallow copy
 	public Linkedlist(Linkedlist a){
 		this.head = a.head;
 	}
+	//needs work
 	public Linkedlist clone(){
 		Linkedlist a = new Linkedlist();
 		return a;
@@ -76,5 +80,48 @@ public class Linkedlist{
 		toInsert.data = val;
 		toInsert.next = n.next;
 		n.next = toInsert;
+	}
+	private int findKFromEnd(int [] info){
+		//until you are at the end, go there
+		while(this.head.next != null){
+			Linkedlist n = new Linkedlist(this.head.next);
+			n.findKFromEnd(info);
+		}
+		//decrement this counter
+
+	}
+	private class IntWrapper{
+		private int value;
+		public IntWrapper(){
+			value = 0;
+		}
+		public IntWrapper(int v){
+			value = v;
+		}
+		public void setValue(int v){
+			this.value =  v;
+		}
+		public int getValue(){
+			return this.value;
+		}
+	}
+	public int findKFromEnd(IntWrapper distance){
+		if (this.head.next != null){
+			Linkedlist n = new LinkedLIst(this.head.next);
+		}
+		int kFromEnd = n.findKFromEnd(distance);
+		if(distance.getValue() > 0){
+			distance.setValue(distance.getValue() - 1);
+			return 0;
+		}
+		else if (distance.getValue() == 0{
+			distance.setValue(distance.getValue() - 1);
+			return this.head.data;	
+		}
+		else return kFromEnd;
+
+	}
+	public int findKFromEnd(int distFromEnd){
+		return this.findKFromEnd(new IntWrapper(distFromEnd));
 	}
 }
