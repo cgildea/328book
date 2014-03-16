@@ -81,15 +81,6 @@ public class Linkedlist{
 		toInsert.next = n.next;
 		n.next = toInsert;
 	}
-	private int findKFromEnd(int [] info){
-		//until you are at the end, go there
-		while(this.head.next != null){
-			Linkedlist n = new Linkedlist(this.head.next);
-			n.findKFromEnd(info);
-		}
-		//decrement this counter
-
-	}
 	private class IntWrapper{
 		private int value;
 		public IntWrapper(){
